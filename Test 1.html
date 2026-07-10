@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV ESA MULTI MANDIRI - Company Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0056b3;       /* Biru Perusahaan */
+            --secondary-color: #003d82;     /* Biru Gelap Kontras */
+            --accent-color: #dc2626;        /* Merah Aksen */
+            --text-dark: #0f172a;           /* Warna Teks Utama */
+            --text-light: #475569;          /* Warna Teks Sekunder */
+            --bg-light: #f8fafc;            /* Background Abu-abu Muda */
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px; /* Ukuran proporsional untuk logo Anda */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            color: var(--accent-color);
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        /* Hero Section */
+.hero {
+    padding: 180px 8% 140px 8%;
+    background: linear-gradient(135deg, #005ca9 0%, #002d54 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* Membagi teks 60% dan gambar 40% */
+    gap: 40px;
+    align-items: center;
+    z-index: 2;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to top right, var(--white) 50%, transparent 50%);
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 100%;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+}
+
+.hero h1 span {
+    color: #ff4d4d;
+}
+
+.hero p {
+    font-size: 1.15rem;
+    color: #e2e8f0;
+    margin-bottom: 35px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Pengaturan Gambar di Samping Kanan */
+.hero-image {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* Memperbaiki typo '20 px' & warna shadow */
+    border: 4px solid rgba(255, 255, 255, 0.15);
+    object-fit: cover;
+}
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        }
+
+        .btn-secondary {
+            border: 2px solid rgba(255,255,255,0.3);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Section Global Settings */
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            margin-top: 15px;
+            font-size: 1.05rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Dibuat seimbang 50% : 50% */
+            gap: 40px;
+            align-items: stretch; /* Membuat tinggi kotak kiri & kanan sama rata */
+            margin-bottom: 60px;
+        }
+
+        .about-text h3 {
+            font-size: 1.7rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        .values-section {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .values-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        /* Visi Misi Block */
+        .vision-mission {
+            background-color: var(--bg-light);
+            padding: 35px;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .vm-block {
+            margin-bottom: 25px;
+        }
+
+        .vm-block h4 {
+            color: var(--primary-color);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vm-block h4::before {
+            content: '■';
+            color: var(--accent-color);
+            font-size: 0.8rem;
+        }
+
+        .vm-block p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        .vm-block ul {
+            padding-left: 20px;
+            color: var(--text-light);
+        }
+
+        .vm-block ul li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* Core Values Cards */
+        .values-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Menjadi 4 kolom sejajar di desktop */
+            gap: 20px;
+        }
+
+        .value-card {
+            background-color: var(--bg-light);
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border-top: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .value-card:hover {
+        border-top-color: var(--accent-color);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .value-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Product & Services Section */
+        .services {
+            background-color: var(--bg-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 86, 179, 0.08);
+            border-bottom-color: var(--accent-color);
+        }
+
+        .service-icon {
+            width: 55px;
+            height: 55px;
+            background-color: rgba(0, 86, 179, 0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        /* Why Choose Us Section */
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-box {
+            padding: 30px 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid #edf2f7;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-box:hover .stat-number {
+            color: var(--accent-color);
+            transition: color 0.3s ease;
+        }
+
+        .stat-title {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .stat-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 35px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            background-color: rgba(220, 38, 38, 0.08);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .info-text h4 {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .info-text p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid #edf2f7;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background-color: var(--bg-light);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: var(--white);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 86, 179, 0.15);
+        }
+
+        .btn-submit:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b1528;
+            color: #94a3b8;
+            padding: 70px 8% 30px 8%;
+            font-size: 0.95rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            color: var(--white);
+            margin-bottom: 22px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-links h4::after, .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 35px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-links ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--white);
+            padding-left: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr; /* Menjadi 1 kolom bertumpuk di tablet */
+        gap: 30px;
+    }
+    .values-container {
+        grid-template-columns: repeat(2, 1fr); /* Kartu core values menjadi 2x2 di tablet */
+    }
+}
+
+@media (max-width: 600px) {
+    .values-container {
+        grid-template-columns: 1fr; /* Kartu core values menjadi 1 kolom penuh di HP */
+    }
+}
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home" class="logo-container">
+            <img src="LOGO ESA.png" alt="Logo CV ESA MULTI MANDIRI" class="logo-img" onerror="this.style.display='none';">
+            <div class="logo-text">
+                CV. ESA MULTI MANDIRI
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Profil</a></li>
+            <li><a href="#product">Produk & Layanan</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+<section id="home" class="hero">
+    
+    <!-- Kolom Kiri: Khusus Tulisan & Tombol -->
+    <div class="hero-content">
+        <h1>CV. ESA MULTI MANDIRI</h1>
+        <p>General, Speciality Chemical & Laboratory. Solusi satu atap terpercaya penyedia perangkat, instrumen berkualitas tinggi, serta layanan teknik terintegrasi untuk kebutuhan industri dan laboratorium Anda.</p>
+        <div class="btn-container">
+            <a href="#layanan" class="btn btn-primary" style="background-color: var(--accent-color);">Info Layanan</a>
+        </div>
+    </div>
+
+    <!-- Kolom Kanan: Khusus Foto (Sejajar Sempurna) -->
+    <div class="hero-image">
+        <img src="Test.jpeg" alt="Kantor CV ESA MULTI MANDIRI">
+    </div>
+
+</section>
+
+    <section id="about">
+        <div class="section-title">
+            <h2>Tentang Kami</h2>
+            <p>Mengenal lebih dekat profil, visi, misi, dan nilai operasional perusahaan kami.</p>
+        </div>
+        
+        <!-- Baris Atas: Overview & Visi Misi (Sejajar & Rapi) -->
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Company Overview</h3>
+                <p><strong>CV. Esa Multi Mandiri</strong> merupakan Perusahaan yang bergerak dalam berbagai bidang. Antara lain yaitu penyediaan bahan kimia, pupuk, imbuhan pakan ternak, peralatan laboratorium dan peralatan lapangan serta peralatan teknik atau instalasi untuk keperluan proyek-proyek pemerintah, swasta dan masyarakat luas.</p>
+                <p>Kami berkomitmen untuk menjadi solusi satu atap terpercaya bagi kebutuhan laboratorium, menyediakan perangkat dan instrumen berkualitas tinggi untuk diagnostik kimia, biologi, dan klinis. Tidak hanya sebagai penyedia produk terintegrasi, kami juga mengedepankan profesionalisme kerja yang berorientasi penuh pada kepuasan klien.</p>
+            </div>
+
+            <div class="vision-mission">
+                <div class="vm-block">
+                    <h4>Visi Perusahaan</h4>
+                    <p>Menjadi perusahaan terdepan dalam penyediaan bahan kimia dan peralatan laboratorium dan lain-lain.</p>
+                </div>
+                <div class="vm-block" style="margin-bottom: 0;">
+                    <h4>Misi Perusahaan</h4>
+                    <ul>
+                        <li><strong>Integrity:</strong> Menjunjung tinggi nilai integritas dalam setiap bisnis.</li>
+                        <li><strong>Brand Image:</strong> Membentuk Brand image yang terpercaya.</li>
+                        <li><strong>Inovasi:</strong> Inovasi dan kreativitas dalam produk, jasa dan proses bisnis.</li>
+                        <li><strong>Dedication:</strong> Dedikasi yang tinggi terhadap perusahaan dan pelanggan.</li>
+                        <li><strong>Bertanggung Jawab:</strong> Kami bertanggung jawab atas tindakan dan keputusan kami.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Baris Bawah: Core Values (Dipisah menjadi baris penuh yang elegan) -->
+        <div class="values-section">
+            <h3 class="values-title">Core Values Perusahaan</h3>
+            <div class="values-container">
+                <div class="value-card">
+                    <h4>Integrity</h4>
+                    <p>Menjunjung tinggi nilai integritas dan kejujuran tertinggi dalam setiap kesepakatan bisnis.</p>
+                </div>
+                <div class="value-card">
+                    <h4>Brand Image</h4>
+                    <p>Membentuk dan menjaga citra reputasi brand perusahaan yang konsisten dan terpercaya.</p>
+                </div>
+                <div class="value-card">
+                    <h4>Inovasi & Kreativitas</h4>
+                    <p>Terus berinovasi secara dinamis dalam penyediaan produk, jasa, maupun optimalisasi proses bisnis.</p>
+                </div>
+                <div class="value-card">
+                    <h4>Dedication & Tanggung Jawab</h4>
+                    <p>Dedikasi tinggi terhadap pelanggan serta bertanggung jawab penuh atas setiap tindakan dan keputusan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product" class="services">
+        <div class="section-title">
+            <h2>Produk & Layanan Kami</h2>
+            <p>Solusi terpadu berskala luas yang dirancang khusus untuk memenuhi standar ketat industri Anda.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🧪</div>
+                <h3>General & Specialty Chemical</h3>
+                <p>Menyediakan Aquadest, Research and Speciality Chemical, Analytical Reagent Grade (AR), HPLC / Gradient Grade Solvents, dan Spectroscopy Grade.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🔬</div>
+                <h3>Laboratory Equipment</h3>
+                <p>Menyediakan Glass Ware, Plastic Ware, Porcelain Ware, Stirrer, Digital Hot Plate, Vacuum Desicator, Shaker, Drying Oven, Water Purifier, dll.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💨</div>
+                <h3>Speciality Gases</h3>
+                <p>Menyediakan Berbagai Macam Gas seperti Acetylene, Nitrogen UHP, Oksigen UHP, dan P.10.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🌱</div>
+                <h3>Environment Monitoring</h3>
+                <p>Peralatan monitoring lingkungan yang akurat untuk memantau kualitas udara, air, dan tanah untuk kebutuhan industri dan pemerintah.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🛠️</div>
+                <h3>Lab Facility (Desain & Build)</h3>
+                <p>Jasa pembuatan fasilitas laboratorium seperti Pipe Line Installation, Workbench & Flooring Epoxy, Fume Hood, Biological Safety Cabinet, Laminar Flow, dll.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💧</div>
+                <h3>Wastewater Treatment (WWTP)</h3>
+                <p>Desain dan instalasi pengolahan air dan air limbah yang efektif dan efisien dengan teknologi terkini.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3>Service & Calibration</h3>
+                <p>Layanan service dan kalibrasi alat laboratorium profesional untuk memastikan alat berfungsi baik dan hasil akurat.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🦺</div>
+                <h3>Pelatihan & Sertifikasi K3</h3>
+                <p>Menyediakan sertifikasi seperti Ahli K3 Umum, Scaffolding, K3 Listrik, First Aid, K3 Kimia, K3 Migas, hingga sertifikasi kompetensi lingkungan.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🌾</div>
+                <h3>Pupuk Organik & Pakan Ternak</h3>
+                <p>Menyediakan Pupuk Organik merek Agrodyke dan imbuhan Pakan Ternak Trypi yang dapat mempercepat pertumbuhan dan mengurangi biaya.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="keunggulan">
+        <div class="section-title">
+            <h2>Mengapa Memilih Kami?</h2>
+            <p>Nilai kedisiplinan operasional yang menjadikan kami mitra utama tepercaya.</p>
+        </div>
+
+        <div class="why-us-grid">
+            <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-title">Komitmen Mutu</div>
+                <div class="stat-desc">Semua instrumen dan bahan kimia melalui kontrol uji standar kualitas tinggi.</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">Solutif</div>
+                <div class="stat-title">Satu Atap</div>
+                <div class="stat-desc">Menyediakan produk terintegrasi dari suplai material hingga jasa instalasi laboratorium.</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">Ahli</div>
+                <div class="stat-title">Tim Profesional</div>
+                <div class="stat-desc">Didukung penuh oleh tenaga kerja terampil di bidang K3, gas teknik, dan WWTP.</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">Prima</div>
+                <div class="stat-title">Respons Cepat</div>
+                <div class="stat-desc">Mengutamakan koordinasi yang komunikatif untuk kepuasan jangka panjang klien.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background-color: var(--bg-light);">
+        <div class="section-title">
+            <h2>Hubungi Kami</h2>
+            <p>Mari diskusikan kebutuhan instrumen, material lab, proyek instalasi, atau sertifikasi perusahaan Anda.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Siap Bekerja Sama?</h3>
+                <p>Silakan hubungi perwakilan operasional kami atau kunjungi alamat kantor kami di bawah ini untuk mendapatkan penawaran harga terbaik.</p>
+                
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <h4>Alamat Kantor</h4>
+                        <p>Jalan Wan Sagaf No. 10 B Kota Pontianak – Kalimantan Barat</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-text">
+                        <h4>Telepon / Fax</h4>
+                        <p>(0561) 745206</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">💬</div>
+                    <div class="info-text">
+                        <h4>WhatsApp Resmi</h4>
+                        <p>08115669966</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">✉</div>
+                    <div class="info-text">
+                        <h4>Email Resmi</h4>
+                        <p>esamultimandiri@yahoo.co.id</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3 style="font-size: 1.3rem; margin-bottom: 20px; color: var(--primary-color);">Kirim Pesan Penawaran</h3>
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Terima kasih! Permintaan penawaran Anda telah terkirim (Demo Tampilan).');">
+                    <div class="form-group">
+                        <label>Nama Lengkap / Instansi</label>
+                        <input type="text" class="form-control" placeholder="Nama Anda atau Instansi Pemerintah/Swasta" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Alamat Email / No. WhatsApp</label>
+                        <input type="text" class="form-control" placeholder="Nomor Kontak yang dapat dihubungi" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Detail Produk / Layanan yang Dibutuhkan</label>
+                        <textarea class="form-control" rows="4" placeholder="Jelaskan kebutuhan bahan kimia, alat laboratorium, pelatihan K3, atau proyek teknik yang diinginkan..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Kirim ke Sistem Penawaran</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <h3>CV. ESA MULTI MANDIRI</h3>
+                <p>Mitra terpercaya penyedia bahan kimia (General & Specialty), peralatan laboratorium, gas spesialisasi, instalasi fasilitas lab, hingga pengolahan air limbah dan sertifikasi K3 kompetensi lingkungan.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Informasi Lengkap</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Kami</a></li>
+                    <li><a href="#product">Product & Layanan</a></li>
+                    <li><a href="#contact">Contact Kami</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Hubungi Kami</h4>
+                <p style="margin-bottom: 15px;">Hubungi via WhatsApp resmi untuk respon cepat pengadaan barang dan layanan.</p>
+                <a href="https://wa.me/628115669966" target="_blank" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem; box-shadow: none; background-color: var(--accent-color);">Hubungi WhatsApp</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CV. ESA MULTI MANDIRI.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
