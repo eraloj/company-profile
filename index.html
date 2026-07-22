@@ -30,6 +30,7 @@
             background-color: var(--white);
             line-height: 1.7;
             scroll-behavior: smooth;
+            overflow-x: hidden; /* Mencegah geser horizontal di HP */
         }
 
         /* Navigation Bar */
@@ -74,6 +75,23 @@
             font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: 1px;
+        }
+
+        /* Hamburger Menu Button untuk HP */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 26px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+            transition: all 0.3s ease;
         }
 
         .nav-links {
@@ -313,6 +331,7 @@
         .vm-block ul {
             padding-left: 20px;
             color: var(--text-light);
+            text-align: left;
         }
 
         .vm-block ul li {
@@ -500,7 +519,6 @@
             line-height: 1.6;
         }
 
-        /* Style Baru untuk Tautan Kontak Aktif */
         .contact-card p a {
             color: var(--text-light);
             text-decoration: none;
@@ -581,47 +599,170 @@
             font-size: 0.85rem;
         }
 
-        /* Responsive Breakpoints */
+        /* =========================================================
+           RESPONSIVE BREAKPOINTS (DISEMPURNAKAN UNTUK HP PORTRAIT)
+           ========================================================= */
+
+        /* Tablet & Laptop Kecil (Maksimal 992px) */
         @media (max-width: 992px) {
-            .about-grid {
-                grid-template-columns: 1fr; 
+            .about-grid,
+            .services-grid,
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr); 
                 gap: 30px;
             }
-            .values-container {
-                grid-template-columns: repeat(2, 1fr); 
-            }
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .contact-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .values-container {
-                grid-template-columns: 1fr; 
-            }
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
+            .values-container,
             .why-us-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr); 
             }
             .hero {
                 grid-template-columns: 1fr;
-                padding-top: 140px;
+                padding-top: 150px;
                 text-align: center;
+            }
+            .hero-image {
+                margin-top: 20px;
             }
             .btn-container {
                 justify-content: center;
             }
             .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Tablet Kecil & Smartphone (Maksimal 768px) */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            /* Aktifkan Menu Hamburger */
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.08);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.35s ease-out;
+            }
+
+            /* Kelas saat menu hamburger diklik */
+            .nav-links.active {
+                max-height: 350px;
+                border-bottom: 3px solid var(--primary-color);
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 15px 0;
+                width: 100%;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            /* Pengecilan jarak & font di HP */
+            section {
+                padding: 70px 5%;
+            }
+
+            .hero {
+                padding: 130px 5% 80px 5%;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .section-title {
+                margin-bottom: 40px;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .footer-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 35px;
+            }
+        }
+
+        /* HP Portrait / Layar Sangat Kecil (Maksimal 480px) */
+        @media (max-width: 480px) {
+            .logo-img {
+                height: 40px;
+            }
+
+            .logo-text {
+                font-size: 1.05rem;
+            }
+
+            .logo-text span {
+                font-size: 0.75rem;
+            }
+
+            .hero h1 {
+                font-size: 1.95rem; /* Ukuran yang pas untuk layar HP */
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 25px;
+            }
+
+            /* Ubah semua grid menjadi 1 kolom pas ke bawah */
+            .about-grid,
+            .values-container,
+            .services-grid,
+            .why-us-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+            }
+
+            .vision-mission {
+                padding: 25px 20px;
+            }
+
+            .service-card,
+            .contact-card,
+            .stat-box {
+                padding: 25px 20px;
+            }
+
+            /* Tombol memenuhi lebar layar HP agar mudah diklik jempol */
+            .btn {
+                width: 100%;
+                text-align: center;
+                padding: 14px 20px;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                width: 100%;
             }
         }
     </style>
@@ -635,7 +776,13 @@
                 CV. ESA MULTI MANDIRI
             </div>
         </a>
-        <ul class="nav-links">
+        <!-- Tombol Hamburger (Hanya muncul di HP) -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="nav-list">
             <li><a href="#home">Beranda</a></li>
             <li><a href="#about">Profil</a></li>
             <li><a href="#product">Produk & Layanan</a></li>
@@ -807,7 +954,7 @@
         </div>
     </section>
 
-    <!-- Symmetrical Contact Section (Updated with Live Links) -->
+    <!-- Contact Section -->
     <section id="contact" style="background-color: var(--bg-light);">
         <div class="section-title">
             <h2>Siap Bekerja Sama?</h2>
@@ -868,5 +1015,23 @@
         </div>
     </footer>
 
+    <!-- Script Ringan untuk Interaktivitas Mobile Menu -->
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        // Buka/tutup menu hamburger saat diklik
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        // Tutup menu otomatis setelah salah satu link diklik (opsional, sangat nyaman untuk user HP)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
