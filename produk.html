@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk & Layanan - CV. ESA MULTI MANDIRI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0056b3;       /* Biru Perusahaan */
+            --secondary-color: #003d82;     /* Biru Gelap Kontras */
+            --accent-color: #dc2626;        /* Merah Aksen */
+            --text-dark: #0f172a;           /* Warna Teks Utama */
+            --text-light: #475569;          /* Warna Teks Sekunder */
+            --bg-light: #f8fafc;            /* Background Abu-abu Muda */
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.7;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px; 
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            color: var(--accent-color);
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 26px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a.active, .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a.active::after, .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Page Header Banner */
+        .page-header {
+            padding: 150px 8% 60px 8%;
+            background: linear-gradient(135deg, #005ca9 0%, #002d54 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Catalog Section */
+        .catalog-container {
+            padding: 60px 8% 100px 8%;
+        }
+
+        /* Filter Kategori */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            border: 2px solid #e2e8f0;
+            background-color: var(--white);
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0, 86, 179, 0.2);
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid #edf2f7;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: #cbd5e1;
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary-color);
+            position: relative;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .product-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .product-specs {
+            background-color: var(--bg-light);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .btn-wa {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px;
+            background-color: #25D366;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-wa:hover {
+            background-color: #16a34a;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b1528;
+            color: #94a3b8;
+            padding: 70px 8% 30px 8%;
+            font-size: 0.95rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            color: var(--white);
+            margin-bottom: 22px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-links h4::after, .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 35px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 14px;
+        }
+
+        .footer-links ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 15px 5%; }
+            .menu-toggle { display: flex; }
+            .nav-links {
+                position: absolute;
+                top: 100%; left: 0; width: 100%;
+                background-color: var(--white);
+                flex-direction: column; align-items: center;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.08);
+                max-height: 0; overflow: hidden;
+                transition: max-height 0.35s ease-out;
+            }
+            .nav-links.active {
+                max-height: 350px;
+                border-bottom: 3px solid var(--primary-color);
+            }
+            .nav-links a {
+                display: block; padding: 15px 0; width: 100%;
+                text-align: center; border-bottom: 1px solid #f1f5f9;
+            }
+            .page-header { padding: 130px 5% 50px 5%; }
+            .page-header h1 { font-size: 2.2rem; }
+            .catalog-container { padding: 40px 5% 80px 5%; }
+            .footer-grid { grid-template-columns: 1fr; gap: 35px; }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid { grid-template-columns: 1fr; }
+            .filter-buttons { gap: 8px; }
+            .filter-btn { padding: 8px 16px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="LOGO ESA.png" alt="Logo CV ESA MULTI MANDIRI" class="logo-img" onerror="this.style.display='none';">
+            <div class="logo-text">
+                CV. ESA MULTI MANDIRI
+            </div>
+        </a>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="nav-list">
+            <li><a href="index.html#home">Beranda</a></li>
+            <li><a href="index.html#about">Profil</a></li>
+            <li><a href="produk.html" class="active">Produk & Layanan</a></li>
+            <li><a href="index.html#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>Katalog Produk & Layanan</h1>
+        <p>Temukan solusi spesifik untuk kebutuhan laboratorium, bahan kimia industri, hingga pengolahan limbah dan sertifikasi kompetensi Anda.</p>
+    </header>
+
+    <main class="catalog-container">
+        <!-- Tombol Filter Kategori -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Semua Produk</button>
+            <button class="filter-btn" data-filter="kimia">Bahan Kimia</button>
+            <button class="filter-btn" data-filter="lab">Alat Lab & Gas</button>
+            <button class="filter-btn" data-filter="agro">Agro & Ternak</button>
+            <button class="filter-btn" data-filter="jasa">Jasa & Sertifikasi</button>
+        </div>
+
+        <!-- Daftar Produk -->
+        <div class="products-grid">
+            
+            <!-- Produk 1 -->
+            <div class="product-card" data-category="kimia">
+                <div class="product-image">
+                    <span class="product-badge">Bahan Kimia</span>
+                    🧪
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Analytical Reagent (AR) Grade</h3>
+                    <p class="product-desc">Bahan kimia dengan tingkat kemurnian tinggi untuk pengujian analisis laboratorium standar internasional.</p>
+                    <div class="product-specs">
+                        <strong>Tersedia:</strong> Asam Sulfat, HCL, Etnol, dll.<br>
+                        <strong>Kemasan:</strong> Botol Kaca / Jeriken
+                    </div>
+                    <a href="https://wa.me/628115669966?text=Halo%20CV.%20Esa%20Multi%20Mandiri,%20saya%20ingin%20minta%20penawaran%20untuk%20produk%20Analytical%20Reagent%20Grade." target="_blank" class="btn-wa">💬 Minta Penawaran</a>
+                </div>
+            </div>
+
+            <!-- Produk 2 -->
+            <div class="product-card" data-category="lab">
+                <div class="product-image">
+                    <span class="product-badge">Alat Lab</span>
+                    🔬
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Glassware & Plasticware Lab</h3>
+                    <p class="product-desc">Peralatan gelas dan plastik tahan panas serta bahan kimia untuk kebutuhan penelitian dan operasional harian lab.</p>
+                    <div class="product-specs">
+                        <strong>Produk:</strong> Beaker, Erlenmeyer, Pipet, dll.<br>
+                        <strong>Standar:</strong> Borosilicate 3.3 Glass
+                    </div>
+                    <a href="https://wa.me/628115669966?text=Halo%20CV.%20Esa%20Multi%20Mandiri,%20saya%20ingin%20minta%20penawaran%20untuk%20produk%20Glassware%20%26%20Plasticware." target="_blank" class="btn-wa">💬 Minta Penawaran</a>
+                </div>
+            </div>
+
+            <!-- Produk 3 -->
+            <div class="product-card" data-category="lab">
+                <div class="product-image">
+                    <span class="product-badge">Gas Spesialis</span>
+                    💨
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Gas Nitrogen & Oksigen UHP</h3>
+                    <p class="product-desc">Gas spesialisasi dengan kemurnian Ultra High Purity (UHP) untuk instrumen sensitif seperti GC, AAS, dan ICP.</p>
+                    <div class="product-specs">
+                        <strong>Kemurnian:</strong> 99.999% (UHP)<br>
+                        <strong>Layanan:</strong> Refill & Sewa Tabung
+                    </div>
+                    <a href="https://wa.me/628115669966?text=Halo%20CV.%20Esa%20Multi%20Mandiri,%20saya%20ingin%20minta%20penawaran%20untuk%20produk%20Gas%20UHP." target="_blank" class="btn-wa">💬 Minta Penawaran</a>
+                </div>
+            </div>
+
+            <!-- Produk 4 -->
+            <div class="product-card" data-category="lab">
+                <div class="product-image">
+                    <span class="product-badge">Instrumen Lab</span>
+                    ⚙️
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Digital Hot Plate Stirrer</h3>
+                    <p class="product-desc">Alat pemanas dan pengaduk larutan dengan kontrol suhu digital yang sangat presisi dan pelat anti-karat.</p>
+                    <div class="product-specs">
+                        <strong>Fitur:</strong> Digital LED, Speed Control<br>
+                        <strong>Garansi:</strong> Resmi 1 Tahun + Kalibrasi
+                    </div>
+                    <a href="https://wa.me/628115669966?text=Halo%20CV.%20Esa%20Multi%20Mandiri,%20saya%20ingin%20minta%20penawaran%20untuk%20produk%20Digital%20Hot%20Plate%20Stirrer." target="_blank" class="btn-wa">💬 Minta Penawaran</a>
+                </div>
+            </div>
+
+            <!-- Produk 5 -->
+            <div class="product-card" data-category="kimia">
+                <div class="product-image">
+                    <span class="product-badge">Bahan Kimia</span>
+                    💧
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">HPLC / Gradient Grade Solvents</h3>
+                    <p class="product-desc">Pelarut kristal murni yang dirancang khusus untuk instrumen High-Performance Liquid Chromatography (HPLC).</p>
+                    <div class="product-specs">
+                        <strong>Jenis:</strong> Acetonitrile, Methanol, Water<br>
+                        <strong>Standar:</strong> UV/Gradient Grade
+                    </div>
+                    <a href="https://wa.me/628115669966?text=Halo%20CV.%20Esa%20Multi%20Mandiri,%20saya%20ingin%20minta%20penawaran%20untuk%20produk%20HPLC%20Solvents." target="_blank" class="btn-wa">💬 Minta Penawaran</a>
+                </div>
+            </div>
+
+            <!-- Produk 6 -->
+            <div class="product-card" data-category="agro">
+                <div class="product-image">
+                    <span class="product-badge">Agro & Ternak</span>
+                    🌾
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Pupuk Organik Agrodyke</h3>
+                    <p class="product-desc">Pupuk organik multifungsi yang mampu memperbaiki struktur tanah dan meningkatkan hasil panen kelapa sawit dan pangan.</p>
+                    <div class="product-specs">
+                        <strong>Manfaat:</strong> Hemat Pupuk Kimia hingga 50%<br>
+                        <strong>Sertifikasi:</strong> Resmi Kementan RI
+                    </div>
+                    <a href="https://wa.me/628115669966?text=Halo%20CV.%20Esa%20Multi%20Mandiri,%20saya%20ingin%20minta%20penawaran%20untuk%20Pupuk%20Organik%20Agrodyke." target="_blank" class="btn-wa">💬 Minta Penawaran</a>
+                </div>
+            </div>
+
+            <!-- Produk 7 -->
+            <div class="product-card" data-category="agro">
+                <div class="product-image">
+                    <span class="product-badge">Agro & Ternak</span>
+                    🐓
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Imbuhan Pakan Ternak TRYPI</h3>
+                    <p class="product-desc">Probiotik dan imbuhan nutrisi alami pakan ternak untuk meningkatkan daya tahan tubuh serta mempercepat bobot ternak.</p>
+                    <div class="product-specs">
+                        <strong>Aplikasi:</strong> Unggas, Sapi, Kambing, Ikan<br>
+                        <strong>Efek:</strong> Mengurangi bau kotoran
+                    </div>
+                    <a href="https://wa.me/628115669966?text=Halo%20CV.%20Esa%20Multi%20Mandiri,%20saya%20ingin%20minta%20penawaran%20untuk%20Imbuhan%20Pakan%20TRYPI." target="_blank" class="btn-wa">💬 Minta Penawaran</a>
+                </div>
+            </div>
+
+            <!-- Produk 8 -->
+            <div class="product-card" data-category="jasa">
+                <div class="product-image">
+                    <span class="product-badge">Jasa Instalasi</span>
+                    🛠️
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Lab Desain & Build (Fume Hood)</h3>
+                    <p class="product-desc">Jasa pembuatan meja laboratorium anti-kimia, lemari asam (Fume Hood), instalasi gas line, dan lantai epoxy.</p>
+                    <div class="product-specs">
+                        <strong>Kelebihan:</strong> Custom sesuai ukuran ruangan<br>
+                        <strong>Material:</strong> Phenolic Resin / Epoxy
+                    </div>
+                    <a href="https://wa.me/628115669966?text=Halo%20CV.%20Esa%20Multi%20Mandiri,%20saya%20ingin%20konsultasi%20jasa%20desain%20%26%20instalasi%20laboratorium." target="_blank" class="btn-wa">💬 Minta Penawaran</a>
+                </div>
+            </div>
+
+            <!-- Produk 9 -->
+            <div class="product-card" data-category="jasa">
+                <div class="product-image">
+                    <span class="product-badge">Sertifikasi</span>
+                    🦺
+                </div>
+                <div class="product-content">
+                    <h3 class="product-title">Pelatihan & Sertifikasi K3</h3>
+                    <p class="product-desc">Penyelenggaraan training dan sertifikasi Ahli K3 Umum, K3 Kimia, Scaffolding, hingga BNSP Lingkungan.</p>
+                    <div class="product-specs">
+                        <strong>Metode:</strong> Online / Offline / In-House<br>
+                        <strong>Sertifikat:</strong> Resmi Kemnaker / BNSP
+                    </div>
+                    <a href="https://wa.me/628115669966?text=Halo%20CV.%20Esa%20Multi%20Mandiri,%20saya%20ingin%20minta%20jadwal%20%26%20penawaran%20Sertifikasi%20K3." target="_blank" class="btn-wa">💬 Minta Penawaran</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-about">
+                <h3>CV. ESA MULTI MANDIRI</h3>
+                <p>Mitra terpercaya penyedia bahan kimia (General & Specialty), peralatan laboratorium, gas spesialisasi, instalasi fasilitas lab, hingga pengolahan air limbah dan sertifikasi K3 kompetensi lingkungan.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Informasi Lengkap</h4>
+                <ul>
+                    <li><a href="index.html#home">Beranda</a></li>
+                    <li><a href="index.html#about">Profil</a></li>
+                    <li><a href="produk.html">Produk & Layanan</a></li>
+                    <li><a href="index.html#contact">Kontak</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Hubungi Kami</h4>
+                <p style="margin-bottom: 15px;">Hubungi via WhatsApp resmi untuk respon cepat pengadaan barang dan layanan.</p>
+                <a href="https://wa.me/628115669966" target="_blank" class="btn-wa" style="width: inline-block; background-color: var(--accent-color);">Hubungi WhatsApp</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CV. ESA MULTI MANDIRI.</p>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript untuk Filter Produk & Menu HP -->
+    <script>
+        // 1. Script Menu Hamburger untuk HP
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        // 2. Script Filter Kategori Produk
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Hapus class 'active' dari semua tombol, lalu aktifkan yang diklik
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                productCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (filterValue === 'all' || filterValue === cardCategory) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
