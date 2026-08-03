@@ -183,14 +183,73 @@
             justify-content: center;
         }
 
-        .hero-image img {
+.slider-container {
+            position: relative;
             width: 100%;
             max-width: 450px;
-            height: auto;
             border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             border: 4px solid rgba(255, 255, 255, 0.15);
+            overflow: hidden; /* Penting untuk menyembunyikan foto yang keluar area */
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out; /* Animasi geser halus */
+            width: 100%;
+        }
+
+        .slide {
+            min-width: 100%; /* Tiap foto mengambil 100% lebar container */
+            height: auto;
             object-fit: cover;
+        }
+
+        /* Styling Tombol Slider */
+        .slide-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 15px;
+            font-size: 18px;
+            border-radius: 50%;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .slide-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        .slide-btn.prev { left: 10px; }
+        .slide-btn.next { right: 10px; }
+
+        /* Styling Titik Indikator (Dots) */
+        .slide-dots {
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: var(--accent-color);
         }
 
         .btn-container {
@@ -785,7 +844,7 @@
         <ul class="nav-links" id="nav-list">
             <li><a href="#home">Beranda</a></li>
             <li><a href="#about">Profil</a></li>
-            <li><a href="#product">Produk & Layanan</a></li>
+            <li><a href="produk.html">Produk & Layanan</a></li>
             <li><a href="#contact">Kontak</a></li>
         </ul>
     </nav>
@@ -800,8 +859,18 @@
             </div>
         </div>
         <div class="hero-image">
-            <img src="Test.jpeg" alt="Kantor CV ESA MULTI MANDIRI">
+            <div class="slider-container">
+                <div class="slider-wrapper" id="sliderWrapper">
+            <img src="Test.jpeg" alt="Kantor CV ESA MULTI MANDIRI" class="slide">
+            <img src="Test2.jpeg" alt="Kantor CV ESA MULTI MANDIRI 2" class="slide">
+            <img src="Test3.jpeg" alt="Kantor CV ESA MULTI MANDIRI 3" class="slide">
         </div>
+        <button class="slide-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="slide-btn next" onclick="moveSlide(1)">&#10095;</button>
+
+        <div class="slide-dots" id="slideDots"></div>
+         </div>
+    </div>
     </section>
 
     <!-- About Section -->
@@ -1000,7 +1069,7 @@
                 <ul>
                     <li><a href="#home">Beranda</a></li>
                     <li><a href="#about">Profil</a></li>
-                    <li><a href="#product">Produk & Layanan</a></li>
+                    <li><a href="produk.html">Produk & Layanan</a></li>
                     <li><a href="#contact">Kontak</a></li>
                 </ul>
             </div>
@@ -1033,5 +1102,50 @@
             });
         });
     </script>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const wrapper = document.getElementById('sliderWrapper');
+        const dotsContainer = document.getElementById('slideDots');
+
+        // Buat titik indikator sesuai jumlah gambar
+        slides.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        // Fungsi menggeser slide via tombol prev/next
+        function moveSlide(step) {
+            currentSlide += step;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            updateSlider();
+        }
+
+        // Fungsi menggeser slide via titik indikator
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // Fungsi update tampilan slider
+        function updateSlider() {
+            wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentSlide].classList.add('active');
+        }
+
+        // Autoplay Slider (Ganti foto otomatis setiap 4 detik)
+        setInterval(() => {
+            moveSlide(1);
+        }, 4000);
+    </script>
+
 </body>
 </html>
