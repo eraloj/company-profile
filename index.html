@@ -156,6 +156,7 @@
 
         .hero-content {
             max-width: 100%;
+            min-width: 0;
         }
 
         .hero h1 {
@@ -744,11 +745,13 @@
             }
 
             .hero {
-                padding: 130px 5% 80px 5%;
+                padding: 110px 5% 60px 5%;
+                grid-template-columns: 1fr;
             }
 
             .hero h1 {
-                font-size: 2.4rem;
+                font-size: 1.8rem;
+                word-wrap: break-word; 
             }
 
             .section-title {
@@ -780,12 +783,15 @@
             }
 
             .hero h1 {
-                font-size: 1.95rem; /* Ukuran yang pas untuk layar HP */
+                font-size: 1.45rem; /* Ukuran yang pas untuk layar HP */
+                line-height: 1.3;
+                margin-bottom: 15px;
             }
 
             .hero p {
-                font-size: 1rem;
-                margin-bottom: 25px;
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+                line-height: 1.5;
             }
 
             /* Ubah semua grid menjadi 1 kolom pas ke bawah */
@@ -842,10 +848,10 @@
             <span></span>
         </div>
         <ul class="nav-links" id="nav-list">
-            <li><a href="#home">Beranda</a></li>
-            <li><a href="#about">Profil</a></li>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="profil.html">Profil</a></li>
             <li><a href="produk.html">Produk & Layanan</a></li>
-            <li><a href="#contact">Kontak</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
         </ul>
     </nav>
 
@@ -863,7 +869,7 @@
                 <div class="slider-wrapper" id="sliderWrapper">
             <img src="Test.jpeg" alt="Kantor CV ESA MULTI MANDIRI" class="slide">
             <img src="Test2.jpeg" alt="Kantor CV ESA MULTI MANDIRI 2" class="slide">
-            <img src="Test3.jpg" alt="Kantor CV ESA MULTI MANDIRI 3" class="slide">
+            <img src="Test3.jpeg" alt="Kantor CV ESA MULTI MANDIRI 3" class="slide">
         </div>
         <button class="slide-btn prev" onclick="moveSlide(-1)">&#10094;</button>
         <button class="slide-btn next" onclick="moveSlide(1)">&#10095;</button>
@@ -1046,12 +1052,14 @@
             <div class="contact-card">
                 <div class="contact-icon">💬</div>
                 <h4>WhatsApp Resmi</h4>
+                <p><a href="https://wa.me/6282352276722" target="_blank" rel="noopener noreferrer">082352276722</a></p>
                 <p><a href="https://wa.me/628115669966" target="_blank" rel="noopener noreferrer">08115669966</a></p>
             </div>
 
             <div class="contact-card">
                 <div class="contact-icon">✉</div>
                 <h4>Email Resmi</h4>
+                <p><a href="mailto:mandiricvesamulti@gmail.com">mandiricvesamulti@gmail.com</a></p>
                 <p><a href="mailto:esamultimandiri@yahoo.co.id">esamultimandiri@yahoo.co.id</a></p>
             </div>
         </div>
@@ -1068,9 +1076,9 @@
                 <h4>Informasi Lengkap</h4>
                 <ul>
                     <li><a href="#home">Beranda</a></li>
-                    <li><a href="#about">Profil</a></li>
+                    <li><a href="profil.html">Profil</a></li>
                     <li><a href="produk.html">Produk & Layanan</a></li>
-                    <li><a href="#contact">Kontak</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
